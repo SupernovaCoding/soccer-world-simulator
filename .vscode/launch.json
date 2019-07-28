@@ -1,0 +1,39 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - World",
+            "request": "launch",
+            "mainClass": "backend.World",
+            "projectName": "SoccerWorldSimulator"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Country",
+            "request": "launch",
+            "mainClass": "backend.Country",
+            "projectName": "SoccerWorldSimulator"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - League",
+            "request": "launch",
+            "mainClass": "backend.League",
+            "projectName": "SoccerWorldSimulator"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Team",
+            "request": "launch",
+            "mainClass": "backend.Team",
+            "projectName": "SoccerWorldSimulator"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Player",
+            "request": "launch",
+            "mainClass": "backend.Player",
+            "projectName": "SoccerWorldSimulator"
+        }
+    ]
+}
