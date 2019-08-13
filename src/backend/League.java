@@ -22,8 +22,31 @@ public class League{
 
     public League(Country country){
         this.country = country;
+    }
+
+    public void finishInit(){
+        leagueIndetifier = (country.leagues.indexOf(this)+1);
         LeagueBuilder.initLeague(this);
         LeagueScheduler.makeSchedule(this, teams);
+    }
+
+    public void simDay(){
+        gameDay();
+        
+        for(Team team : teams){
+            team.simDay();
+        }
+    }
+
+    private void gameDay(){
+        for(MatchDate mDate : matchDates){
+            if(mDate.date.compareTo(InternalCalendar.startDate.getTime()) > 0){
+                break;
+            }
+            else if(mDate.date.compareTo(InternalCalendar.startDate.getTime()) == 0){
+                mDate.playAll();
+            }
+        }
     }
 
     @Override
@@ -48,10 +71,6 @@ class LeagueBuilder{
 
 
 class LeagueScheduler{
-
-    public LeagueScheduler(){
-
-    }
 
     public static void makeSchedule(League league, ArrayList<Team> teams){
         int amountOfTeams = teams.size();
@@ -84,7 +103,8 @@ class LeagueScheduler{
                     t2 = teams.get(home);
                 }
 
-                matchDate.matches.add(new MatchSimulation(t1, t2));
+                MatchSimulation sim = new MatchSimulation(t1, t2);
+                matchDate.matches.add(sim);
             }
             league.matchDates.add(matchDate);
         }

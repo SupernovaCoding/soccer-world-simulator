@@ -1,7 +1,9 @@
 package backend;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import backend.helpers.LeagueStandings;
 import simulation.MatchDate;
 import statics.InternalCalendar;
 import statics.Names;
@@ -12,22 +14,66 @@ public class World{
 
     public ArrayList<Country> countries = new ArrayList<>();
 
-    
-    public static void main(String[] args) {
+    public World(){
         new Names();
         new InternalCalendar();
-        World world = new World();
-        int amountOfCountries = Rand.randomNumberBetween(2, 5);
+        int amountOfCountries = Rand.randomNumberBetween(5, 10);
 
         for(int i = 0; i < amountOfCountries; i++){
-            world.countries.add(new Country());
+            countries.add(new Country());
+        }
+    }
+
+    public void simDay(){
+        for(Country country : countries){
+            country.simDay();
+        }
+    }
+
+    public void start(){
+        Team mostGoalsFor = countries.get(0).leagues.get(0).teams.get(0), 
+             mostGoalsAgainst = countries.get(0).leagues.get(0).teams.get(0), 
+             mostPoints = countries.get(0).leagues.get(0).teams.get(0);
+
+        for(int i = 0; i < 365; i++){
+            simDay();
+            InternalCalendar.tick();
         }
 
-        for(MatchDate md : world.countries.get(0).leagues.get(0).matchDates){
-            Printer.print(md.date);
-        }
+        /*
+        for(Country c : countries){
+            for(League l : c.leagues){
+                LeagueStandings ls = new LeagueStandings(l);
+                for(Team t : l.teams){
+                    if(mostGoalsFor.goalsForThisSeason < t.goalsForThisSeason){
+                        mostGoalsFor = t;
+                    }
+                    if(mostGoalsAgainst.goalsAgainstThisSeason < t.goalsAgainstThisSeason){
+                        mostGoalsAgainst = t;
+                    }
+                    if(mostPoints.pointsThisSeason < t.pointsThisSeason){
+                        mostPoints = t;
+                    }
+                }
 
-        Printer.print(world.countries.get(0).leagues.get(0).matchDates.size());
+                List<Team> standings = ls.getStandingsOrder();
+                Printer.print("---League " + l.name + " Standings---");
+                for(int i = 0; i < standings.size(); i++){
+                    Printer.print((i+1) + ". " + standings.get(i).name + ": " + 
+                                 standings.get(i).winsThisSeason + "/" + 
+                                 standings.get(i).losesThisSeason + "/" + 
+                                 standings.get(i).drawsThisSeason +
+                                 "  " + standings.get(i).pointsThisSeason);
+                }
+                Printer.print("\n");
+            }
+        }
+        */
+    }
+    
+    public static void main(String[] args) {
+        
+
     }
     
 

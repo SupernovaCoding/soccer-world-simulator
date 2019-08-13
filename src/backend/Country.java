@@ -18,6 +18,12 @@ public class Country{
         CountryBuilder.initCountry(this);
     }
 
+    public void simDay(){
+        for(League league : leagues){
+            league.simDay();
+        }
+    }
+
     @Override
     public String toString() {
         return "Country:" +
@@ -35,8 +41,8 @@ class CountryBuilder{
         int amountOfLeagues = Rand.randomNumberBetween(3, 5);
         for(int i = 0; i < amountOfLeagues; i++){
             League league = new League(country);
-            league.leagueIndetifier = i+1;
             country.leagues.add(league);
+            league.finishInit();
         }
     }
 

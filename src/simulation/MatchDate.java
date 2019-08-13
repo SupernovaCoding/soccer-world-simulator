@@ -11,4 +11,10 @@ public class MatchDate{
         this.date = date;
     }
 
+    public void playAll(){
+        for(MatchSimulation matchSimulation : matches){
+            matchSimulation.play();
+        }
+    }
+
 }

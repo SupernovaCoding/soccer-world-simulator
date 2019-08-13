@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "mainClass": "app.App",
+            "projectName": "SoccerWorldSimulator"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - World",
             "request": "launch",
             "mainClass": "backend.World",

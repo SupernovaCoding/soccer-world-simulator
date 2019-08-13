@@ -17,6 +17,8 @@ public class Player{
     public int assists, assistsThisSeason;
     public int tackles, tacklesThisSeason;
     public int saves, savesThisSeason;
+    public int goalsAgainst, goalsAgainstThisSeason;
+    public int gamesPlayed, gamesPlayedThisSeason;
     public int age, contractLength;
 
     public String name;
@@ -32,19 +34,6 @@ public class Player{
         this.position = position;
         PlayerBuilder.playerInit(this);
     }
-
-    /*
-    public static void main(String[] args) {
-        Player p = new Player(null, Player_Position.GK);
-        Printer.print(p);
-        p = new Player(null, Player_Position.LB);
-        Printer.print(p);
-        p = new Player(null, Player_Position.LM);
-        Printer.print(p);
-        p = new Player(null, Player_Position.ST);
-        Printer.print(p);
-    }
-    */
 
     @Override
     public String toString() {
@@ -138,8 +127,5 @@ class PlayerBuilder{
 
 
 enum Player_Position{
-
-    //TODO: Add more positions when you decide to put in custom formation.
     GK, LB, CB, RB, LM, CM, RM, ST;
-
 }
